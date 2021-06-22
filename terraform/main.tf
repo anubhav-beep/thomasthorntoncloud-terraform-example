@@ -1,3 +1,11 @@
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "tamopstfstates"
+    storage_account_name = "tamopstf43323"
+    container_name       = "tfstatedevops"
+    key                  = "terraformgithubexample.tfstate"
+  }
+}
 
 provider "azurerm" {
   # The "feature" block is required for AzureRM provider 2.x.
@@ -10,7 +18,7 @@ data "azurerm_client_config" "current" {}
 
 #Create Resource Group
 resource "azurerm_resource_group" "tamops" {
-  name     = "tamops"
+  name     = "tamopstfstates"
   location = "eastus2"
 }
 
